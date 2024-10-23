@@ -50,6 +50,14 @@ Status of This Memo
 
    This Internet-Draft will expire on 28 February 2025.
 
+
+
+
+Bormann                 Expires 28 February 2025                [Page 1]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
 Copyright Notice
 
    Copyright (c) 2024 IETF Trust and the persons identified as the
@@ -66,22 +74,23 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction
-   2.  CDDL definitions for (almost) published RFCs
-     2.1.  RFC 7071 (Reputation Interchange)
-     2.2.  RFC 8366 (Voucher Artifact for Bootstrapping Protocols)
-     2.3.  RFC 9457 (Problem Details for HTTP APIs)
-     2.4.  RFC 9595 (YANG-SID)
-     2.5.  Your favorite RFC here...
-   3.  CDDL definitions derived from IANA registries
-     3.1.  COSE algorithms
-   4.  IANA Considerations
-   5.  Security considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
-   Acknowledgements
-   Author's Address
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  CDDL definitions for (almost) published RFCs  . . . . . . . .   2
+     2.1.  RFC 7071 (Reputation Interchange) . . . . . . . . . . . .   3
+     2.2.  RFC 8366 (Voucher Artifact for Bootstrapping
+           Protocols)  . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  RFC 9457 (Problem Details for HTTP APIs)  . . . . . . . .   4
+     2.4.  RFC 9595 (YANG-SID) . . . . . . . . . . . . . . . . . . .   4
+     2.5.  Your favorite RFC here... . . . . . . . . . . . . . . . .   5
+   3.  CDDL definitions derived from IANA registries . . . . . . . .   5
+     3.1.  COSE algorithms . . . . . . . . . . . . . . . . . . . . .   6
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   5.  Security considerations . . . . . . . . . . . . . . . . . . .   8
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  10
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
 
@@ -93,6 +102,17 @@ Table of Contents
    This section is intended to have one subsection for each CDDL data
    model presented for an existing RFC.  As a start, it is fleshed out
    with three such data models.
+
+
+
+
+
+
+
+Bormann                 Expires 28 February 2025                [Page 2]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
 
 2.1.  RFC 7071 (Reputation Interchange)
 
@@ -138,6 +158,17 @@ Table of Contents
    script:
 
    sed -e s/ue=/uQ=/ -e s/'"true"'/true/ | cddl rfc8366.cddl vp -
+
+
+
+
+
+
+
+Bormann                 Expires 28 February 2025                [Page 3]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
 
 2.3.  RFC 9457 (Problem Details for HTTP APIs)
 
@@ -187,6 +218,14 @@ Table of Contents
    id-re = "[a-zA-Z_][a-zA-Z0-9\\-_.]*"
    yang$yang-identifier = text .regexp id-re
    revision-identifier = text .regexp "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+
+
+
+Bormann                 Expires 28 February 2025                [Page 4]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
    sid-file-version-identifier = uint .size 4
    sid = text .decimal (0..0x7fffffffffffffff); uint63 as text string
    plus-id<Prefix> = Prefix .cat id-re
@@ -236,6 +275,13 @@ Table of Contents
    The model(s) presented here clearly are in proof-of-concept stage;
    suggestions for improvement are very welcome.
 
+
+
+Bormann                 Expires 28 February 2025                [Page 5]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
 3.1.  COSE algorithms
 
    The IANA registry for COSE Algorithms is part of the IANA cose
@@ -284,6 +330,14 @@ Table of Contents
    A256CTR = -65532
    A128CBC = -65531
    A192CBC = -65530
+
+
+
+Bormann                 Expires 28 February 2025                [Page 6]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
    A256CBC = -65529
    WalnutDSA = -260
    RS512 = -259
@@ -332,6 +386,14 @@ Table of Contents
    A256GCM = 3
    HMAC_256_64 = 4
    HMAC_256_256 = 5
+
+
+
+Bormann                 Expires 28 February 2025                [Page 7]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
    HMAC_384_384 = 6
    HMAC_512_512 = 7
    AES-CCM-16-64-128 = 10
@@ -375,6 +437,18 @@ Table of Contents
               control-06, 21 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
               cddl-more-control-06>.
+
+
+
+
+
+
+
+
+Bormann                 Expires 28 February 2025                [Page 8]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -424,6 +498,14 @@ Table of Contents
               RFC 8366, DOI 10.17487/RFC8366, May 2018,
               <https://www.rfc-editor.org/rfc/rfc8366>.
 
+
+
+
+Bormann                 Expires 28 February 2025                [Page 9]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2024
+
+
    [RFC9290]  Fossati, T. and C. Bormann, "Concise Problem Details for
               Constrained Application Protocol (CoAP) APIs", RFC 9290,
               DOI 10.17487/RFC9290, October 2022,
@@ -451,3 +533,28 @@ Author's Address
    Germany
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann                 Expires 28 February 2025               [Page 10]
