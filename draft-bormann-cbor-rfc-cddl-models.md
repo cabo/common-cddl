@@ -4,8 +4,8 @@ v: 3
 title: >
   CDDL models for some existing RFCs
 # abbrev: CDDL models from RFCs
-docname: draft-bormann-cbor-rfc-cddl-models-04
-date: 2024-08-27
+docname: draft-bormann-cbor-rfc-cddl-models-latest
+date: 2024-08-27 # 04
 keyword: CDDL models
 cat: info
 stream: IETF
