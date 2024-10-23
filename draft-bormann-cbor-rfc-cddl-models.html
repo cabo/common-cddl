@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>CDDL models for some existing RFCs</title>
+<meta content="Carsten Bormann" name="author">
+<meta content="
+       A number of CBOR- and JSON-based protocols have been defined before
+CDDL was standardized or widely used. 
+       This short draft records some CDDL definitions for such protocols,
+which could become part of a library of CDDL definitions available for
+use in CDDL2 processors.  It focuses on CDDL in (almost) published
+IETF RFCs. 
+    " name="description">
+<meta content="xml2rfc 3.23.2" name="generator">
+<meta content="CDDL models" name="keyword">
+<meta content="draft-bormann-cbor-rfc-cddl-models-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.23.2
+    Python 3.12.5
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.3.6
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.3
+    setuptools 75.2.0
+    wcwidth 0.2.13
+-->
+<link href="draft-bormann-cbor-rfc-cddl-models.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cabin Condensed", sans-serif;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+}
+:is(ol, ul) :is(ol, ul) {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  line-height: 1;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+}
+dl.olPercent {
+  --indent: 5ch;
+}
+dl > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
+  margin-top: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
+  margin-bottom: 0;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    overflow-x: auto;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+}
+a.pilcrow[href] { color: var(--pilcrow-weak); }
+a.pilcrow[href]:hover { text-decoration: none; }
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+}
+#identifiers dt {
+  width: var(--identifier-width);
+  min-width: var(--identifier-width);
+  clear: left;
+  float: left;
+  text-align: right;
+  margin-right: 1ch;
+}
+#identifiers dd {
+  margin: 0;
+  margin-left: calc(1em + var(--identifier-width)) !important;
+  min-width: 5em;
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+#toc nav ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+#toc nav li {
+  line-height: 1.3em;
+  margin: 2px 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+#toc a.xref {
+  white-space: normal;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 10ch;
+  margin-right: 1.5ch;
+}
+.references dt:target::before {
+  content: "⇒";
+  width: 15px;
+  margin: 0 10px 0 -25px;
+}
+.references dd {
+  margin-left: 12ch !important;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc.active {
+      opacity: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 8px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active nav {
+    display: block;
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin-top: 2px;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  #toc nav > ul  {
+    margin-bottom: 2em;
+  }
+  #toc ul {
+    margin: 0 0 0 4px;
+    font-size: var(--small-font-size);
+  }
+  #toc ul :is(p, li) {
+    margin: 2px 0;
+    line-height: 22px;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Changes introduced to fix issues found during implementation */
+
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin: 8px 0.5em 0;
+}
+
+/* Provide styling for table cell text alignment */
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 20em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">CDDL models for some existing RFCs</td>
+<td class="right">August 2024</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Bormann</td>
+<td class="center">Expires 28 February 2025</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Network Working Group</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-bormann-cbor-rfc-cddl-models-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2024-08-27" class="published">27 August 2024</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2025-02-28">28 February 2025</time></dd>
+<dt class="label-authors">Author:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">C. Bormann</div>
+<div class="org">Universität Bremen TZI</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">CDDL models for some existing RFCs</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">A number of CBOR- and JSON-based protocols have been defined before
+CDDL was standardized or widely used.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This short draft records some CDDL definitions for such protocols,
+which could become part of a library of CDDL definitions available for
+use in CDDL2 processors.  It focuses on CDDL in (almost) published
+IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venues">
+<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+    Concise Binary Object Representation Maintenance and Extensions Working Group mailing list (cbor@ietf.org),
+    which is archived at <span><a href="https://www.ietf.org/mail-archive/web/cbor/current/maillist.html">https://www.ietf.org/mail-archive/web/cbor/current/maillist.html</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+    <span><a href="https://github.com/cabo/common-cddl">https://github.com/cabo/common-cddl</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 28 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2024 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-cddl-definitions-for-almost" class="internal xref">CDDL definitions for (almost) published RFCs</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-rfc-7071-reputation-interch" class="internal xref">RFC 7071 (Reputation Interchange)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-rfc-8366-voucher-artifact-f" class="internal xref">RFC 8366 (Voucher Artifact for Bootstrapping Protocols)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
+                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-rfc-9457-problem-details-fo" class="internal xref">RFC 9457 (Problem Details for HTTP APIs)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-rfc-9595-yang-sid" class="internal xref">RFC 9595 (YANG-SID)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
+                <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="auto internal xref">2.5</a>.  <a href="#name-your-favorite-rfc-here" class="internal xref">Your favorite RFC here...</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-cddl-definitions-derived-fr" class="internal xref">CDDL definitions derived from IANA registries</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-cose-algorithms" class="internal xref">COSE algorithms</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="intro">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">(Please see abstract.)
+Add in <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> <span>[<a href="#STD90" class="cite xref">STD90</a>]</span>
+        <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span> <span>[<a href="#I-D.ietf-cbor-cddl-more-control" class="cite xref">I-D.ietf-cbor-cddl-more-control</a>]</span><a href="#section-1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cddl-definitions-for-almost-published-rfcs">
+<section id="section-2">
+      <h2 id="name-cddl-definitions-for-almost">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-cddl-definitions-for-almost" class="section-name selfRef">CDDL definitions for (almost) published RFCs</a>
+      </h2>
+<p id="section-2-1">This section is intended to have one subsection for each CDDL data
+model presented for an existing RFC.
+As a start, it is fleshed out with three such data models.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<div id="rfc-7071-reputation-interchange">
+<section id="section-2.1">
+        <h3 id="name-rfc-7071-reputation-interch">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-rfc-7071-reputation-interch" class="section-name selfRef">RFC 7071 (Reputation Interchange)</a>
+        </h3>
+<p id="section-2.1-1"><span><a href="https://rfc-editor.org/rfc/rfc8610#appendix-H" class="relref">Appendix H</a> of [<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> contains two CDDL definitions for <span>[<a href="#RFC7071" class="cite xref">RFC7071</a>]</span>,
+which are not copied here.
+Typically, the compact form would be used in applications using the
+RFC 7071 format; while the extended form might be useful to
+cherry-pick features of RFC 7071 into another protocol.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="rfc-8366-voucher-artifact-for-bootstrapping-protocols">
+<section id="section-2.2">
+        <h3 id="name-rfc-8366-voucher-artifact-f">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-rfc-8366-voucher-artifact-f" class="section-name selfRef">RFC 8366 (Voucher Artifact for Bootstrapping Protocols)</a>
+        </h3>
+<p id="section-2.2-1"><span>[<a href="#RFC8366" class="cite xref">RFC8366</a>]</span> defines a data model for a "Voucher Artifact", which can be
+represented in CDDL as:<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="section-2.2-2">
+<pre>
+voucher-artifact = {
+  "ietf-voucher:voucher": {
+    created-on: yang$date-and-time
+    ? (
+        expires-on: yang$date-and-time
+        ? last-renewal-date: yang$date-and-time
+        //
+        nonce: json-binary&lt;bytes .size (8..32)&gt;
+      )
+    assertion: assertion
+    serial-number: text
+    ? idevid-issuer: json-binary&lt;bytes&gt;
+    pinned-domain-cert: json-binary&lt;bytes&gt;
+    ? domain-cert-revocation-checks: bool
+  }
+}
+
+assertion = "verified" / "logged" / "proximity"
+
+yang$date-and-time = text .regexp cat3&lt;"[0-9]{4}-[0-9]{2}-[0-9]{2}T",
+                            "[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?",
+                            "(Z|[+-][0-9]{2}:[0-9]{2})"&gt;
+
+cat3&lt;A,B,C&gt; = (A .cat B) .cat C
+
+json-binary&lt;T&gt; = text .b64c T
+</pre><a href="#section-2.2-2" class="pilcrow">¶</a>
+</div>
+<p id="section-2.2-3">The two examples in the RFC can be validated with this little patchup
+script:<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+<div class="lang-shell sourcecode" id="section-2.2-4">
+<pre>
+sed -e s/ue=/uQ=/ -e s/'"true"'/true/ | cddl rfc8366.cddl vp -
+</pre><a href="#section-2.2-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="rfc-9457-problem-details-for-http-apis">
+<section id="section-2.3">
+        <h3 id="name-rfc-9457-problem-details-fo">
+<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-rfc-9457-problem-details-fo" class="section-name selfRef">RFC 9457 (Problem Details for HTTP APIs)</a>
+        </h3>
+<p id="section-2.3-1"><span>[<a href="#RFC9457" class="cite xref">RFC9457</a>]</span> defines a simple data model
+that is reproduced in CDDL here:<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="section-2.3-2">
+<pre>
+problem-object = {
+  ? type: preferably-absolute-uri
+  ? title: text
+  ? status: 100..599
+  ? detail: text
+  ? instance: preferably-absolute-uri
+  * text .feature "problem-object-extension" =&gt; any
+}
+
+; RECOMMENDED: absolute URI or at least absolute path:
+preferably-absolute-uri = ~uri
+</pre><a href="#section-2.3-2" class="pilcrow">¶</a>
+</div>
+<p id="section-2.3-3">Note that <span><a href="https://rfc-editor.org/rfc/rfc9290#appendix-B" class="relref">Appendix B</a> of [<a href="#RFC9290" class="cite xref">RFC9290</a>]</span> also defines a CBOR-specific data
+model that may be useful for tunneling <span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span> or <span>[<a href="#RFC9457" class="cite xref">RFC9457</a>]</span> problem details in
+<span>[<a href="#RFC9290" class="cite xref">RFC9290</a>]</span> Concise Problem Details.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="rfc-9595-yang-sid">
+<section id="section-2.4">
+        <h3 id="name-rfc-9595-yang-sid">
+<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-rfc-9595-yang-sid" class="section-name selfRef">RFC 9595 (YANG-SID)</a>
+        </h3>
+<p id="section-2.4-1"><span>[<a href="#RFC9595" class="cite xref">RFC9595</a>]</span> defines a data model for a
+"SID file" in YANG, to be transported as a YANG-JSON instance.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-2">An equivalent CDDL data model is given here:<a href="#section-2.4-2" class="pilcrow">¶</a></p>
+<div class="breakable lang-cddl sourcecode" id="section-2.4-3">
+<pre>
+sid-file = {
+  "ietf-sid-file:sid-file": {
+    module-name: yang$yang-identifier
+    ? module-revision: revision-identifier
+    ? sid-file-version: sid-file-version-identifier
+    ? sid-file-status: "unpublished" / "published"
+    ? description: text
+    ? dependency-revision: [* dependency-revision]
+    ? assignment-range: [* assignment-range]
+    ? item: [*item]
+  }
+}
+
+rep&lt;RE&gt;=cat3&lt;"(", RE, ")*"&gt;
+opt&lt;RE&gt;=cat3&lt;"(", RE, ")?"&gt;
+cat3&lt;A,B,C&gt; = (A .cat B) .cat C
+
+id-re = "[a-zA-Z_][a-zA-Z0-9\\-_.]*"
+yang$yang-identifier = text .regexp id-re
+revision-identifier = text .regexp "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+sid-file-version-identifier = uint .size 4
+sid = text .decimal (0..0x7fffffffffffffff); uint63 as text string
+plus-id&lt;Prefix&gt; = Prefix .cat id-re
+schema-node-re = cat3&lt;plus-id&lt;"/"&gt;, plus-id&lt;":"&gt;, ; qualified
+                      rep&lt;plus-id&lt;"/"&gt; .cat       ; optionally
+                          opt&lt;plus-id&lt;":"&gt;&gt; &gt; &gt;     ; qualified
+schema-node-path = text .regexp schema-node-re
+
+dependency-revision = {
+  module-name: yang$yang-identifier
+  module-revision: revision-identifier
+}
+
+assignment-range = {
+  entry-point: sid
+  size: sid
+}
+
+item = {
+  ? status: "stable" / "unstable" / "obsolete"
+  (
+    namespace: "module" / "identity" / "feature"
+    identifier: yang$yang-identifier
+  //
+    namespace: "data"
+    identifier: schema-node-path
+  )
+  sid: sid
+}
+</pre><a href="#section-2.4-3" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="your-favorite-rfc-here">
+<section id="section-2.5">
+        <h3 id="name-your-favorite-rfc-here">
+<a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-your-favorite-rfc-here" class="section-name selfRef">Your favorite RFC here...</a>
+      </h3>
+</section>
+</div>
+</section>
+</div>
+<div id="iana-defs">
+<section id="section-3">
+      <h2 id="name-cddl-definitions-derived-fr">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-cddl-definitions-derived-fr" class="section-name selfRef">CDDL definitions derived from IANA registries</a>
+      </h2>
+<p id="section-3-1">Often, CDDL models need to use numbers that have been registered as
+values in IANA registries.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">This section is intended to have one subsection for each CDDL data
+model presented that is derived from an existing IANA registry.
+As a start, it is fleshed out with one such data model.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The intention is that these reference modules are update automatically
+(after each change of the registry or periodically, frequent enough.)
+Hence, this document can only present a snapshot for IANA-derived data
+models.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">The model(s) presented here clearly are in proof-of-concept stage;
+suggestions for improvement are very welcome.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<div id="cose-algorithms">
+<section id="section-3.1">
+        <h3 id="name-cose-algorithms">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-cose-algorithms" class="section-name selfRef">COSE algorithms</a>
+        </h3>
+<p id="section-3.1-1">The IANA registry for COSE Algorithms is part of the IANA cose
+registry group <span>[<a href="#IANA.cose" class="cite xref">IANA.cose</a>]</span>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The following automatically derived model defines some 70 CDDL rules
+that have the name for a COSE algorithm as its rule name and the
+actual algorithm number as its right hand side.
+The additional first rule is a type choice between all these
+constants; this could be used in places that just have to validate the
+presence of a COSE algorithm number that was registered at the time
+the model was derived.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">This section does not explore potential filtering of the registry
+entries, e.g., by recommended status (such as leaving out deprecated
+entries) or by capabilities.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">The names given in the COSE algorithms registry are somewhat irregular
+and do not consider their potential use in modeling or programming
+languages; the automatic derivation used here turns sequences of one
+or more spaces and other characters that cannot be in CDDL names
+(<code>[/+]</code> here) into underscores.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<div class="breakable lang-cddl sourcecode" id="section-3.1-5">
+<pre>
+============= NOTE: '\' line wrapping per RFC 8792 ==============
+
+algorithms = RS1 / A128CTR / A192CTR / A256CTR / A128CBC / \
+  A192CBC / A256CBC / WalnutDSA / RS512 / RS384 / RS256 / \
+  ES256K / HSS-LMS / SHAKE256 / SHA-512 / SHA-384 / RSAES-\
+  OAEP_w_SHA-512 / RSAES-OAEP_w_SHA-256 / RSAES-\
+  OAEP_w_RFC_8017_default_parameters / PS512 / PS384 / PS256 / \
+  ES512 / ES384 / ECDH-SS_A256KW / ECDH-SS_A192KW / ECDH-\
+  SS_A128KW / ECDH-ES_A256KW / ECDH-ES_A192KW / ECDH-ES_A128KW \
+  / ECDH-SS_HKDF-512 / ECDH-SS_HKDF-256 / ECDH-ES_HKDF-512 / \
+  ECDH-ES_HKDF-256 / SHAKE128 / SHA-512_256 / SHA-256 / SHA-\
+  256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-128 / \
+  direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / EdDSA / ES256 / \
+  direct / A256KW / A192KW / A128KW / A128GCM / A192GCM / \
+  A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 / \
+  HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-CCM\
+  -64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
+  MAC_256_64 / ChaCha20_Poly1305 / AES-MAC_128_128 / AES-\
+  MAC_256_128 / AES-CCM-16-128-128 / AES-CCM-16-128-256 / AES-\
+  CCM-64-128-128 / AES-CCM-64-128-256 / IV-GENERATION
+RS1 = -65535
+A128CTR = -65534
+A192CTR = -65533
+A256CTR = -65532
+A128CBC = -65531
+A192CBC = -65530
+A256CBC = -65529
+WalnutDSA = -260
+RS512 = -259
+RS384 = -258
+RS256 = -257
+ES256K = -47
+HSS-LMS = -46
+SHAKE256 = -45
+SHA-512 = -44
+SHA-384 = -43
+RSAES-OAEP_w_SHA-512 = -42
+RSAES-OAEP_w_SHA-256 = -41
+RSAES-OAEP_w_RFC_8017_default_parameters = -40
+PS512 = -39
+PS384 = -38
+PS256 = -37
+ES512 = -36
+ES384 = -35
+ECDH-SS_A256KW = -34
+ECDH-SS_A192KW = -33
+ECDH-SS_A128KW = -32
+ECDH-ES_A256KW = -31
+ECDH-ES_A192KW = -30
+ECDH-ES_A128KW = -29
+ECDH-SS_HKDF-512 = -28
+ECDH-SS_HKDF-256 = -27
+ECDH-ES_HKDF-512 = -26
+ECDH-ES_HKDF-256 = -25
+SHAKE128 = -18
+SHA-512_256 = -17
+SHA-256 = -16
+SHA-256_64 = -15
+SHA-1 = -14
+direct_HKDF-AES-256 = -13
+direct_HKDF-AES-128 = -12
+direct_HKDF-SHA-512 = -11
+direct_HKDF-SHA-256 = -10
+EdDSA = -8
+ES256 = -7
+direct = -6
+A256KW = -5
+A192KW = -4
+A128KW = -3
+A128GCM = 1
+A192GCM = 2
+A256GCM = 3
+HMAC_256_64 = 4
+HMAC_256_256 = 5
+HMAC_384_384 = 6
+HMAC_512_512 = 7
+AES-CCM-16-64-128 = 10
+AES-CCM-16-64-256 = 11
+AES-CCM-64-64-128 = 12
+AES-CCM-64-64-256 = 13
+AES-MAC_128_64 = 14
+AES-MAC_256_64 = 15
+ChaCha20_Poly1305 = 24
+AES-MAC_128_128 = 25
+AES-MAC_256_128 = 26
+AES-CCM-16-128-128 = 30
+AES-CCM-16-128-256 = 31
+AES-CCM-64-128-128 = 32
+AES-CCM-64-128-256 = 33
+IV-GENERATION = 34
+</pre><a href="#section-3.1-5" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-4">
+      <h2 id="name-iana-considerations">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-4-1">This document makes no requests of IANA.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">However, the use of IANA registries for deriving CDDL (e.g., as in
+<a href="#iana-defs" class="auto internal xref">Section 3</a>) is an active subject of discussion.<a href="#section-4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-5">
+      <h2 id="name-security-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security considerations</a>
+      </h2>
+<p id="section-5-1">The security considerations of <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>, <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span>, <span>[<a href="#I-D.ietf-cbor-cddl-more-control" class="cite xref">I-D.ietf-cbor-cddl-more-control</a>]</span>, <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> and <span>[<a href="#STD90" class="cite xref">STD90</a>]</span> apply.
+This collection of CDDL models is not thought to create new security
+considerations.
+Errors in the models could -- if we knew of them, we'd fix those
+errors instead of explaining their security consequences in this
+section.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-combined-references">
+<section id="section-6">
+      <h2 id="name-references">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<div id="sec-normative-references">
+<section id="section-6.1">
+        <h3 id="name-normative-references">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.ietf-cbor-cddl-more-control">[I-D.ietf-cbor-cddl-more-control]</dt>
+        <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"More Control Operators for CDDL"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cbor-cddl-more-control-06</span>, <time datetime="2024-07-21" class="refDate">21 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cbor-cddl-more-control-06">https://datatracker.ietf.org/doc/html/draft-ietf-cbor-cddl-more-control-06</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8610">[RFC8610]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9165">[RFC9165]</dt>
+        <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Additional Control Operators for the Concise Data Definition Language (CDDL)"</span>, <span class="seriesInfo">RFC 9165</span>, <span class="seriesInfo">DOI 10.17487/RFC9165</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9165">https://www.rfc-editor.org/rfc/rfc9165</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="STD90">[STD90]</dt>
+        <dd>
+<div class="refInstance">Internet Standard 90, <span>&lt;<a href="https://www.rfc-editor.org/info/std90">https://www.rfc-editor.org/info/std90</a>&gt;</span>.<br><span>At the time of writing, this STD comprises the following:</span>
+</div>
+<div class="refInstance" id="RFC8259">
+            <span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </div>
+</dd>
+<dd class="break"></dd>
+<dt id="STD94">[STD94]</dt>
+      <dd>
+<div class="refInstance">Internet Standard 94, <span>&lt;<a href="https://www.rfc-editor.org/info/std94">https://www.rfc-editor.org/info/std94</a>&gt;</span>.<br><span>At the time of writing, this STD comprises the following:</span>
+</div>
+<div class="refInstance" id="RFC8949">
+            <span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">STD 94</span>, <span class="seriesInfo">RFC 8949</span>, <span class="seriesInfo">DOI 10.17487/RFC8949</span>, <time datetime="2020-12" class="refDate">December 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8949">https://www.rfc-editor.org/info/rfc8949</a>&gt;</span>. </div>
+</dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-6.2">
+        <h3 id="name-informative-references">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="IANA.cose">[IANA.cose]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cose">https://www.iana.org/assignments/cose</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7071">[RFC7071]</dt>
+        <dd>
+<span class="refAuthor">Borenstein, N.</span> and <span class="refAuthor">M. Kucherawy</span>, <span class="refTitle">"A Media Type for Reputation Interchange"</span>, <span class="seriesInfo">RFC 7071</span>, <span class="seriesInfo">DOI 10.17487/RFC7071</span>, <time datetime="2013-11" class="refDate">November 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7071">https://www.rfc-editor.org/rfc/rfc7071</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7807">[RFC7807]</dt>
+        <dd>
+<span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">E. Wilde</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="seriesInfo">RFC 7807</span>, <span class="seriesInfo">DOI 10.17487/RFC7807</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7807">https://www.rfc-editor.org/rfc/rfc7807</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8366">[RFC8366]</dt>
+        <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Pritikin, M.</span>, and <span class="refAuthor">T. Eckert</span>, <span class="refTitle">"A Voucher Artifact for Bootstrapping Protocols"</span>, <span class="seriesInfo">RFC 8366</span>, <span class="seriesInfo">DOI 10.17487/RFC8366</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8366">https://www.rfc-editor.org/rfc/rfc8366</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9290">[RFC9290]</dt>
+        <dd>
+<span class="refAuthor">Fossati, T.</span> and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Problem Details for Constrained Application Protocol (CoAP) APIs"</span>, <span class="seriesInfo">RFC 9290</span>, <span class="seriesInfo">DOI 10.17487/RFC9290</span>, <time datetime="2022-10" class="refDate">October 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9290">https://www.rfc-editor.org/rfc/rfc9290</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9457">[RFC9457]</dt>
+        <dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">Wilde, E.</span>, and <span class="refAuthor">S. Dalal</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="seriesInfo">RFC 9457</span>, <span class="seriesInfo">DOI 10.17487/RFC9457</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9457">https://www.rfc-editor.org/rfc/rfc9457</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9595">[RFC9595]</dt>
+      <dd>
+<span class="refAuthor">Veillette, M., Ed.</span>, <span class="refAuthor">Pelov, A., Ed.</span>, <span class="refAuthor">Petrov, I., Ed.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">M. Richardson</span>, <span class="refTitle">"YANG Schema Item iDentifier (YANG SID)"</span>, <span class="seriesInfo">RFC 9595</span>, <span class="seriesInfo">DOI 10.17487/RFC9595</span>, <time datetime="2024-07" class="refDate">July 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9595">https://www.rfc-editor.org/rfc/rfc9595</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgements">
+<section id="appendix-A">
+      <h2 id="name-acknowledgements">
+<a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+      </h2>
+<p id="appendix-A-1">TBD<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-B">
+      <h2 id="name-authors-address">
+<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Carsten Bormann</span></div>
+<div dir="auto" class="left"><span class="org">Universität Bremen TZI</span></div>
+<div dir="auto" class="left"><span class="street-address">Postfach 330440</span></div>
+<div dir="auto" class="left">
+<span class="postal-code">D-28359</span> <span class="locality">Bremen</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">Germany</span></div>
+<div class="tel">
+<span>Phone:</span>
+<a href="tel:+49-421-218-63921" class="tel">+49-421-218-63921</a>
+</div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:cabo@tzi.org" class="email">cabo@tzi.org</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
