@@ -1,0 +1,26 @@
+voucher-artifact = {
+  "ietf-voucher:voucher": {
+    created-on: yang$date-and-time
+    ? (
+        expires-on: yang$date-and-time
+        ? last-renewal-date: yang$date-and-time
+        //
+        nonce: json-binary<bytes .size (8..32)>
+      )
+    assertion: assertion
+    serial-number: text
+    ? idevid-issuer: json-binary<bytes>
+    pinned-domain-cert: json-binary<bytes>
+    ? domain-cert-revocation-checks: bool
+  }
+}
+
+assertion = "verified" / "logged" / "proximity"
+
+yang$date-and-time = text .regexp cat3<"[0-9]{4}-[0-9]{2}-[0-9]{2}T",
+                            "[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?",
+                            "(Z|[+-][0-9]{2}:[0-9]{2})">
+
+cat3<A,B,C> = (A .cat B) .cat C
+
+json-binary<T> = text .b64c T

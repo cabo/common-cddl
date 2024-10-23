@@ -1,0 +1,49 @@
+sid-file = {
+  "ietf-sid-file:sid-file": {
+    module-name: yang$yang-identifier
+    ? module-revision: revision-identifier
+    ? sid-file-version: sid-file-version-identifier
+    ? sid-file-status: "unpublished" / "published"
+    ? description: text
+    ? dependency-revision: [* dependency-revision]
+    ? assignment-range: [* assignment-range]
+    ? item: [*item]
+  }
+}
+
+rep<RE>=cat3<"(", RE, ")*">
+opt<RE>=cat3<"(", RE, ")?">
+cat3<A,B,C> = (A .cat B) .cat C
+
+id-re = "[a-zA-Z_][a-zA-Z0-9\\-_.]*"
+yang$yang-identifier = text .regexp id-re
+revision-identifier = text .regexp "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+sid-file-version-identifier = uint .size 4
+sid = text .decimal (0..0x7fffffffffffffff); uint63 as text string
+plus-id<Prefix> = Prefix .cat id-re
+schema-node-re = cat3<plus-id<"/">, plus-id<":">, ; qualified
+                      rep<plus-id<"/"> .cat       ; optionally
+                          opt<plus-id<":">> > >     ; qualified
+schema-node-path = text .regexp schema-node-re
+
+dependency-revision = {
+  module-name: yang$yang-identifier
+  module-revision: revision-identifier
+}
+
+assignment-range = {
+  entry-point: sid
+  size: sid
+}
+
+item = {
+  ? status: "stable" / "unstable" / "obsolete"
+  (
+    namespace: "module" / "identity" / "feature"
+    identifier: yang$yang-identifier
+  //
+    namespace: "data"
+    identifier: schema-node-path
+  )
+  sid: sid
+}
