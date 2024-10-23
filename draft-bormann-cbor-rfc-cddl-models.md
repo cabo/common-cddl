@@ -22,6 +22,10 @@ author:
     phone: +49-421-218-63921
     email: cabo@tzi.org
 
+venue:
+  mail: core@ietf.org
+  github: cabo/common-cddl
+
 normative:
   STD90:
     -: json
