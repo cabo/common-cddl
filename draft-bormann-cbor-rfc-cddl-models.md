@@ -5,7 +5,7 @@ title: >
   CDDL models for some existing RFCs
 # abbrev: CDDL models from RFCs
 docname: draft-bormann-cbor-rfc-cddl-models-latest
-date: 2024-08-27 # 04
+date: 2025-02-23 # 05 2024-08-27 # 04
 keyword: CDDL models
 cat: info
 stream: IETF
@@ -86,7 +86,7 @@ represented in CDDL as:
 ~~~ cddl
 {::include rfc8366.cddl}
 ~~~
-{: name="rfc8366.cddl"}
+{: #rfc8366 sourcecode-name="rfc8366.cddl" title="CDDL for RFC 8366"}
 
 The two examples in the RFC can be validated with this little patchup
 script:
@@ -113,7 +113,7 @@ problem-object = {
 ; RECOMMENDED: absolute URI or at least absolute path:
 preferably-absolute-uri = ~uri
 ~~~
-{: name="rfc9457.cddl"}
+{: #rfc9457 sourcecode-name="rfc9457.cddl" title="CDDL for RFC 9457"}
 
 Note that {{Appendix B of RFC9290}} also defines a CBOR-specific data
 model that may be useful for tunneling {{RFC7807}} or {{RFC9457}} problem details in
@@ -129,7 +129,7 @@ An equivalent CDDL data model is given here:
 ~~~ cddl
 {::include rfc9595.cddl}
 ~~~
-{: name="rfc9595.cddl"}
+{: #rfc9595 sourcecode-name="rfc9595.cddl" title="CDDL for RFC 9595"}
 
 ## Your favorite RFC here...
 
@@ -150,7 +150,7 @@ models.
 The model(s) presented here clearly are in proof-of-concept stage;
 suggestions for improvement are very welcome.
 
-## COSE algorithms
+## COSE Algorithms Registry
 
 The IANA registry for COSE Algorithms is part of the IANA cose
 registry group {{IANA.cose}}.
@@ -176,7 +176,8 @@ or more spaces and other characters that cannot be in CDDL names
 ~~~ cddl
 {::include-fold65left2 cose-algorithms.cddl}
 ~~~
-{: name="cose-algorithms.cddl"}
+{: #cose-algorithms sourcecode-name="cose-algorithms.cddl"
+   title="CDDL for cose-algorithms Registry"}
 
 IANA Considerations
 ==================
