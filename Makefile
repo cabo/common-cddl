@@ -14,3 +14,7 @@ else
 	    https://github.com/martinthomson/i-d-template $(LIBDIR)
 endif
 endif
+
+lists.md: draft-bormann-cbor-rfc-cddl-models.xml
+	kramdown-rfc-extract-figures-tables $< >$@.new
+	mv $@.new $@
