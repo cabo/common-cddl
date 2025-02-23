@@ -10,18 +10,24 @@ class Array
     if size == 1
       first
     else
-      raise ArgumentError, "*** not alone: #{inspect}"
+      raise ArgumentError, "*** should be single-element array: #{inspect}"
     end
   end
 end
 
-IANA_XML = "https://www.iana.org/assignments/cose/cose.xml"
+# Which regsitry group and which registry in there are we assigning from
+REG_GROUP = "cose"
+REG_NAME = "algorithms"
 
+# Retrieval URI for REG_GROUP, retrieval parameters
+IANA_XML = "https://www.iana.org/assignments/#{REG_GROUP}/#{REG_GROUP}.xml"
 ACCEPT_XML = {"Accept" => "application/xml"}
 
-EXTRACT_XPATH = "//xmlns:registry[@id='algorithms']/xmlns:record"
+# XPath for REG_NAME, XPath parameters
+EXTRACT_XPATH = "//xmlns:registry[@id='#{REG_NAME}']/xmlns:record"
 NS = {"xmlns" => "http://www.iana.org/assignments"}
 
+# Retrieve registry group; extract records that are neither Unassigned nor Reserved
 badchar = Set[]
 xml_src = URI(IANA_XML).open(ACCEPT_XML).read
 doc = REXML::Document.new(xml_src)
@@ -42,6 +48,7 @@ entries = REXML::XPath.each(doc.root, EXTRACT_XPATH, NS).map {|el|
 
 warn "; ** Non-name characters in <name>: #{badchar.to_a}" unless badchar == Set[]
 
+# Find and warn about duplicates (possibly duplicate after underscore processing)
 names = Set[]
 entries.each do |n, v|
   if names.include?(n)
@@ -49,8 +56,10 @@ entries.each do |n, v|
   end
   names << n
 end
-puts "algorithms = #{names.to_a.join(" / ")}"
 
+# Output choice line
+puts "#{REG_NAME} = #{names.to_a.join(" / ")}"
+# Output one line each for choices
 entries.each do |n, v|
   puts "#{n} = #{v}"
 end
@@ -58,6 +67,8 @@ end
 
 # puts entries.to_yaml
 exit
+
+# Quarry for potential further functions
 
 def count_range(s)
   a, b = s.split("-").map {Integer(_1)}
