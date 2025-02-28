@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby -Ku
 # coding: utf-8
+# extract.rb — extract CDDL from an enum-style IANA registry
+
 require 'rexml/document'
 require 'open-uri'
 require 'open-uri/cached'
