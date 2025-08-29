@@ -5,7 +5,7 @@ title: >
   CDDL models for some existing RFCs
 # abbrev: CDDL models from RFCs
 docname: draft-bormann-cbor-rfc-cddl-models-latest
-date: 2025-02-23 # 05 2024-08-27 # 04
+date: 2025-08-29 # 06 2025-02-23 # 05 2024-08-27 # 04
 keyword: CDDL models
 cat: info
 stream: IETF
@@ -34,8 +34,9 @@ normative:
     -: cbor
 #    =: RFC8949
   RFC8610: cddl
+  RFC9682: cddl-grammar
   RFC9165: control1
-  I-D.ietf-cbor-cddl-more-control: control2
+  RFC9741: control2
 informative:
   RFC7807: problem-old
   RFC8366: voucher
@@ -62,7 +63,7 @@ Introduction        {#intro}
 
 (Please see abstract.)
 Add in {{-cbor}} {{-json}}
-{{-cddl}} {{-control1}} {{-control2}}
+{{-cddl}} {{-cddl-grammar}} {{-control1}} {{-control2}}
 
 # CDDL definitions for (almost) published RFCs
 
@@ -193,7 +194,7 @@ However, the use of IANA registries for deriving CDDL (e.g., as in
 Security considerations
 =======================
 
-The security considerations of {{-cddl}}, {{-control1}}, {{-control2}}, {{-cbor}} and {{-json}} apply.
+The security considerations of {{-cddl}}, {{-cddl-grammar}}, {{-control1}}, {{-control2}}, {{-cbor}} and {{-json}} apply.
 This collection of CDDL models is not thought to create new security
 considerations.
 Errors in the models could -- if we knew of them, we'd fix those
