@@ -4,8 +4,8 @@
 
 Network Working Group                                         C. Bormann
 Internet-Draft                                    Universität Bremen TZI
-Intended status: Informational                          23 February 2025
-Expires: 27 August 2025
+Intended status: Informational                            29 August 2025
+Expires: 2 March 2026
 
 
                    CDDL models for some existing RFCs
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 1]
+Bormann                   Expires 2 March 2026                  [Page 1]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
-   This Internet-Draft will expire on 27 August 2025.
+   This Internet-Draft will expire on 2 March 2026.
 
 Copyright Notice
 
@@ -86,19 +86,19 @@ Table of Contents
      2.5.  Your favorite RFC here... . . . . . . . . . . . . . . . .   5
    3.  CDDL definitions derived from IANA registries . . . . . . . .   5
      3.1.  COSE Algorithms Registry  . . . . . . . . . . . . . . . .   6
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
-   5.  Security considerations . . . . . . . . . . . . . . . . . . .   8
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   5.  Security considerations . . . . . . . . . . . . . . . . . . .   9
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  10
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  10
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  10
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  11
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
-   (Please see abstract.)  Add in [STD94] [STD90] [RFC8610] [RFC9165]
-   [I-D.ietf-cbor-cddl-more-control]
+   (Please see abstract.)  Add in [STD94] [STD90] [RFC8610] [RFC9682]
+   [RFC9165] [RFC9741]
 
 2.  CDDL definitions for (almost) published RFCs
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 2]
+Bormann                   Expires 2 March 2026                  [Page 2]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
 2.1.  RFC 7071 (Reputation Interchange)
@@ -165,9 +165,9 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 3]
+Bormann                   Expires 2 March 2026                  [Page 3]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
 2.3.  RFC 9457 (Problem Details for HTTP APIs)
@@ -221,9 +221,9 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 4]
+Bormann                   Expires 2 March 2026                  [Page 4]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
    yang$yang-identifier = text .regexp id-re
@@ -277,9 +277,9 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 5]
+Bormann                   Expires 2 March 2026                  [Page 5]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
    The intention is that these reference modules are update
@@ -315,29 +315,30 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    ============= NOTE: '\' line wrapping per RFC 8792 ==============
 
    algorithms = RS1 / A128CTR / A192CTR / A256CTR / A128CBC / \
-     A192CBC / A256CBC / KT256 / KT128 / TurboSHAKE256 / \
-     TurboSHAKE128 / WalnutDSA / RS512 / RS384 / RS256 / ES256K / \
-     HSS-LMS / SHAKE256 / SHA-512 / SHA-384 / RSAES-OAEP_w_SHA-512 \
-     / RSAES-OAEP_w_SHA-256 / RSAES-\
+     A192CBC / A256CBC / ESB512 / ESB384 / ESB320 / ESB256 / KT256 \
+     / KT128 / TurboSHAKE256 / TurboSHAKE128 / WalnutDSA / RS512 / \
+     RS384 / RS256 / Ed448 / ESP512 / ESP384 / ML-DSA-87 / ML-DSA-\
+     65 / ML-DSA-44 / ES256K / HSS-LMS / SHAKE256 / SHA-512 / SHA-\
+     384 / RSAES-OAEP_w_SHA-512 / RSAES-OAEP_w_SHA-256 / RSAES-\
      OAEP_w_RFC_8017_default_parameters / PS512 / PS384 / PS256 / \
      ES512 / ES384 / ECDH-SS_A256KW / ECDH-SS_A192KW / ECDH-\
      SS_A128KW / ECDH-ES_A256KW / ECDH-ES_A192KW / ECDH-ES_A128KW \
      / ECDH-SS_HKDF-512 / ECDH-SS_HKDF-256 / ECDH-ES_HKDF-512 / \
-     ECDH-ES_HKDF-256 / SHAKE128 / SHA-512_256 / SHA-256 / SHA-\
-     256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-128 / \
-     direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / EdDSA / ES256 / \
-     direct / A256KW / A192KW / A128KW / A128GCM / A192GCM / \
-     A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 / \
-     HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-CCM\
-     -64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
+     ECDH-ES_HKDF-256 / Ed25519 / SHAKE128 / SHA-512_256 / SHA-256 \
+     / SHA-256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-\
+     128 / direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / ESP256 / \
+     EdDSA / ES256 / direct / A256KW / A192KW / A128KW / A128GCM / \
+     A192GCM / A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 \
+     / HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-\
 
 
 
-Bormann                  Expires 27 August 2025                 [Page 6]
+Bormann                   Expires 2 March 2026                  [Page 6]
 
-Internet-Draft     CDDL models for some existing RFCs      February 2025
+Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 
+     CCM-64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
      MAC_256_64 / ChaCha20_Poly1305 / AES-MAC_128_128 / AES-\
      MAC_256_128 / AES-CCM-16-128-128 / AES-CCM-16-128-256 / AES-\
      CCM-64-128-128 / AES-CCM-64-128-256 / IV-GENERATION
@@ -348,6 +349,10 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    A128CBC = -65531
    A192CBC = -65530
    A256CBC = -65529
+   ESB512 = -268
+   ESB384 = -267
+   ESB320 = -266
+   ESB256 = -265
    KT256 = -264
    KT128 = -263
    TurboSHAKE256 = -262
@@ -356,6 +361,12 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    RS512 = -259
    RS384 = -258
    RS256 = -257
+   Ed448 = -53
+   ESP512 = -52
+   ESP384 = -51
+   ML-DSA-87 = -50
+   ML-DSA-65 = -49
+   ML-DSA-44 = -48
    ES256K = -47
    HSS-LMS = -46
    SHAKE256 = -45
@@ -375,10 +386,19 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    ECDH-ES_A256KW = -31
    ECDH-ES_A192KW = -30
    ECDH-ES_A128KW = -29
+
+
+
+Bormann                   Expires 2 March 2026                  [Page 7]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2025
+
+
    ECDH-SS_HKDF-512 = -28
    ECDH-SS_HKDF-256 = -27
    ECDH-ES_HKDF-512 = -26
    ECDH-ES_HKDF-256 = -25
+   Ed25519 = -19
    SHAKE128 = -18
    SHA-512_256 = -17
    SHA-256 = -16
@@ -386,16 +406,9 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    SHA-1 = -14
    direct_HKDF-AES-256 = -13
    direct_HKDF-AES-128 = -12
-
-
-
-Bormann                  Expires 27 August 2025                 [Page 7]
-
-Internet-Draft     CDDL models for some existing RFCs      February 2025
-
-
    direct_HKDF-SHA-512 = -11
    direct_HKDF-SHA-256 = -10
+   ESP256 = -9
    EdDSA = -8
    ES256 = -7
    direct = -6
@@ -426,6 +439,17 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
                 Figure 4: CDDL for cose-algorithms Registry
 
+
+
+
+
+
+
+Bormann                   Expires 2 March 2026                  [Page 8]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2025
+
+
 4.  IANA Considerations
 
    This document makes no requests of IANA.
@@ -435,32 +459,15 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
 5.  Security considerations
 
-   The security considerations of [RFC8610], [RFC9165],
-   [I-D.ietf-cbor-cddl-more-control], [STD94] and [STD90] apply.  This
-   collection of CDDL models is not thought to create new security
-   considerations.  Errors in the models could -- if we knew of them,
-   we'd fix those errors instead of explaining their security
-   consequences in this section.
-
-
-
-
-Bormann                  Expires 27 August 2025                 [Page 8]
-
-Internet-Draft     CDDL models for some existing RFCs      February 2025
-
+   The security considerations of [RFC8610], [RFC9682], [RFC9165],
+   [RFC9741], [STD94] and [STD90] apply.  This collection of CDDL models
+   is not thought to create new security considerations.  Errors in the
+   models could -- if we knew of them, we'd fix those errors instead of
+   explaining their security consequences in this section.
 
 6.  References
 
 6.1.  Normative References
-
-   [I-D.ietf-cbor-cddl-more-control]
-              Bormann, C., "Concise Data Definition Language (CDDL):
-              Additional Control Operators for the Conversion and
-              Processing of Text", Work in Progress, Internet-Draft,
-              draft-ietf-cbor-cddl-more-control-08, 9 January 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              cddl-more-control-08>.
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -473,6 +480,15 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
               DOI 10.17487/RFC9165, December 2021,
               <https://www.rfc-editor.org/rfc/rfc9165>.
 
+   [RFC9682]  Bormann, C., "Updates to the Concise Data Definition
+              Language (CDDL) Grammar", RFC 9682, DOI 10.17487/RFC9682,
+              November 2024, <https://www.rfc-editor.org/rfc/rfc9682>.
+
+   [RFC9741]  Bormann, C., "Concise Data Definition Language (CDDL):
+              Additional Control Operators for the Conversion and
+              Processing of Text", RFC 9741, DOI 10.17487/RFC9741, March
+              2025, <https://www.rfc-editor.org/rfc/rfc9741>.
+
    [STD90]    Internet Standard 90,
               <https://www.rfc-editor.org/info/std90>.
               At the time of writing, this STD comprises the following:
@@ -481,6 +497,14 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
               Interchange Format", STD 90, RFC 8259,
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
+
+
+
+
+Bormann                   Expires 2 March 2026                  [Page 9]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2025
+
 
    [STD94]    Internet Standard 94,
               <https://www.rfc-editor.org/info/std94>.
@@ -496,15 +520,6 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
    [IANA.cose]
               IANA, "CBOR Object Signing and Encryption (COSE)",
               <https://www.iana.org/assignments/cose>.
-
-
-
-
-
-Bormann                  Expires 27 August 2025                 [Page 9]
-
-Internet-Draft     CDDL models for some existing RFCs      February 2025
-
 
    [RFC7071]  Borenstein, N. and M. Kucherawy, "A Media Type for
               Reputation Interchange", RFC 7071, DOI 10.17487/RFC7071,
@@ -535,10 +550,17 @@ Internet-Draft     CDDL models for some existing RFCs      February 2025
 
 List of Figures
 
-   1.  CDDL for RFC 8366 (Figure 1)
-   2.  CDDL for RFC 9457 (Figure 2)
-   3.  CDDL for RFC 9595 (Figure 3)
-   4.  CDDL for cose-algorithms Registry (Figure 4)
+   Figure 1:  CDDL for RFC 8366
+   Figure 2:  CDDL for RFC 9457
+   Figure 3:  CDDL for RFC 9595
+   Figure 4:  CDDL for cose-algorithms Registry
+
+
+
+Bormann                   Expires 2 March 2026                 [Page 10]
+
+Internet-Draft     CDDL models for some existing RFCs        August 2025
+
 
 Acknowledgements
 
@@ -557,4 +579,38 @@ Author's Address
 
 
 
-Bormann                  Expires 27 August 2025                [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bormann                   Expires 2 March 2026                 [Page 11]

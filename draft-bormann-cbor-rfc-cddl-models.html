@@ -14,22 +14,22 @@ which could become part of a library of CDDL definitions available for
 use in CDDL2 processors.  It focuses on CDDL in (almost) published
 IETF RFCs. 
     " name="description">
-<meta content="xml2rfc 3.27.0" name="generator">
+<meta content="xml2rfc 3.30.0" name="generator">
 <meta content="CDDL models" name="keyword">
 <meta content="draft-bormann-cbor-rfc-cddl-models-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.27.0
-    Python 3.12.9
+  xml2rfc 3.30.0
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-bormann-cbor-rfc-cddl-models.xml" rel="alternate" type="application/rfc+xml">
@@ -1049,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDDL models for some existing RFCs</td>
-<td class="right">February 2025</td>
+<td class="right">August 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann</td>
-<td class="center">Expires 27 August 2025</td>
+<td class="center">Expires 2 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-bormann-cbor-rfc-cddl-models-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-23" class="published">23 February 2025</time>
+<time datetime="2025-08-29" class="published">29 August 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-27">27 August 2025</time></dd>
+<dd class="expires"><time datetime="2026-03-02">2 March 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1222,7 +1222,7 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-1-1">(Please see abstract.)
 Add in <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> <span>[<a href="#STD90" class="cite xref">STD90</a>]</span>
-        <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span> <span>[<a href="#I-D.ietf-cbor-cddl-more-control" class="cite xref">I-D.ietf-cbor-cddl-more-control</a>]</span><a href="#section-1-1" class="pilcrow">¶</a></p>
+        <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> <span>[<a href="#RFC9682" class="cite xref">RFC9682</a>]</span> <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span> <span>[<a href="#RFC9741" class="cite xref">RFC9741</a>]</span><a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cddl-definitions-for-almost-published-rfcs">
@@ -1453,21 +1453,22 @@ or more spaces and other characters that cannot be in CDDL names
 ============= NOTE: '\' line wrapping per RFC 8792 ==============
 
 algorithms = RS1 / A128CTR / A192CTR / A256CTR / A128CBC / \
-  A192CBC / A256CBC / KT256 / KT128 / TurboSHAKE256 / \
-  TurboSHAKE128 / WalnutDSA / RS512 / RS384 / RS256 / ES256K / \
-  HSS-LMS / SHAKE256 / SHA-512 / SHA-384 / RSAES-OAEP_w_SHA-512 \
-  / RSAES-OAEP_w_SHA-256 / RSAES-\
+  A192CBC / A256CBC / ESB512 / ESB384 / ESB320 / ESB256 / KT256 \
+  / KT128 / TurboSHAKE256 / TurboSHAKE128 / WalnutDSA / RS512 / \
+  RS384 / RS256 / Ed448 / ESP512 / ESP384 / ML-DSA-87 / ML-DSA-\
+  65 / ML-DSA-44 / ES256K / HSS-LMS / SHAKE256 / SHA-512 / SHA-\
+  384 / RSAES-OAEP_w_SHA-512 / RSAES-OAEP_w_SHA-256 / RSAES-\
   OAEP_w_RFC_8017_default_parameters / PS512 / PS384 / PS256 / \
   ES512 / ES384 / ECDH-SS_A256KW / ECDH-SS_A192KW / ECDH-\
   SS_A128KW / ECDH-ES_A256KW / ECDH-ES_A192KW / ECDH-ES_A128KW \
   / ECDH-SS_HKDF-512 / ECDH-SS_HKDF-256 / ECDH-ES_HKDF-512 / \
-  ECDH-ES_HKDF-256 / SHAKE128 / SHA-512_256 / SHA-256 / SHA-\
-  256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-128 / \
-  direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / EdDSA / ES256 / \
-  direct / A256KW / A192KW / A128KW / A128GCM / A192GCM / \
-  A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 / \
-  HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-CCM\
-  -64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
+  ECDH-ES_HKDF-256 / Ed25519 / SHAKE128 / SHA-512_256 / SHA-256 \
+  / SHA-256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-\
+  128 / direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / ESP256 / \
+  EdDSA / ES256 / direct / A256KW / A192KW / A128KW / A128GCM / \
+  A192GCM / A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 \
+  / HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-\
+  CCM-64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
   MAC_256_64 / ChaCha20_Poly1305 / AES-MAC_128_128 / AES-\
   MAC_256_128 / AES-CCM-16-128-128 / AES-CCM-16-128-256 / AES-\
   CCM-64-128-128 / AES-CCM-64-128-256 / IV-GENERATION
@@ -1478,6 +1479,10 @@ A256CTR = -65532
 A128CBC = -65531
 A192CBC = -65530
 A256CBC = -65529
+ESB512 = -268
+ESB384 = -267
+ESB320 = -266
+ESB256 = -265
 KT256 = -264
 KT128 = -263
 TurboSHAKE256 = -262
@@ -1486,6 +1491,12 @@ WalnutDSA = -260
 RS512 = -259
 RS384 = -258
 RS256 = -257
+Ed448 = -53
+ESP512 = -52
+ESP384 = -51
+ML-DSA-87 = -50
+ML-DSA-65 = -49
+ML-DSA-44 = -48
 ES256K = -47
 HSS-LMS = -46
 SHAKE256 = -45
@@ -1509,6 +1520,7 @@ ECDH-SS_HKDF-512 = -28
 ECDH-SS_HKDF-256 = -27
 ECDH-ES_HKDF-512 = -26
 ECDH-ES_HKDF-256 = -25
+Ed25519 = -19
 SHAKE128 = -18
 SHA-512_256 = -17
 SHA-256 = -16
@@ -1518,6 +1530,7 @@ direct_HKDF-AES-256 = -13
 direct_HKDF-AES-128 = -12
 direct_HKDF-SHA-512 = -11
 direct_HKDF-SHA-256 = -10
+ESP256 = -9
 EdDSA = -8
 ES256 = -7
 direct = -6
@@ -1570,7 +1583,7 @@ IV-GENERATION = 34
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security considerations</a>
       </h2>
-<p id="section-5-1">The security considerations of <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>, <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span>, <span>[<a href="#I-D.ietf-cbor-cddl-more-control" class="cite xref">I-D.ietf-cbor-cddl-more-control</a>]</span>, <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> and <span>[<a href="#STD90" class="cite xref">STD90</a>]</span> apply.
+<p id="section-5-1">The security considerations of <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>, <span>[<a href="#RFC9682" class="cite xref">RFC9682</a>]</span>, <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span>, <span>[<a href="#RFC9741" class="cite xref">RFC9741</a>]</span>, <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> and <span>[<a href="#STD90" class="cite xref">STD90</a>]</span> apply.
 This collection of CDDL models is not thought to create new security
 considerations.
 Errors in the models could -- if we knew of them, we'd fix those
@@ -1589,10 +1602,6 @@ section.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-cbor-cddl-more-control">[I-D.ietf-cbor-cddl-more-control]</dt>
-        <dd>
-<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): Additional Control Operators for the Conversion and Processing of Text"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cbor-cddl-more-control-08</span>, <time datetime="2025-01-09" class="refDate">9 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cbor-cddl-more-control-08">https://datatracker.ietf.org/doc/html/draft-ietf-cbor-cddl-more-control-08</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8610">[RFC8610]</dt>
         <dd>
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
@@ -1600,6 +1609,14 @@ section.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <dt id="RFC9165">[RFC9165]</dt>
         <dd>
 <span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Additional Control Operators for the Concise Data Definition Language (CDDL)"</span>, <span class="seriesInfo">RFC 9165</span>, <span class="seriesInfo">DOI 10.17487/RFC9165</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9165">https://www.rfc-editor.org/rfc/rfc9165</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9682">[RFC9682]</dt>
+        <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Updates to the Concise Data Definition Language (CDDL) Grammar"</span>, <span class="seriesInfo">RFC 9682</span>, <span class="seriesInfo">DOI 10.17487/RFC9682</span>, <time datetime="2024-11" class="refDate">November 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9682">https://www.rfc-editor.org/rfc/rfc9682</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9741">[RFC9741]</dt>
+        <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): Additional Control Operators for the Conversion and Processing of Text"</span>, <span class="seriesInfo">RFC 9741</span>, <span class="seriesInfo">DOI 10.17487/RFC9741</span>, <time datetime="2025-03" class="refDate">March 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9741">https://www.rfc-editor.org/rfc/rfc9741</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="STD90">[STD90]</dt>
         <dd>
@@ -1664,20 +1681,32 @@ section.<a href="#section-5-1" class="pilcrow">¶</a></p>
       <h2 id="name-list-of-figures">
 <a href="#name-list-of-figures" class="section-name selfRef">List of Figures</a>
       </h2>
-<ol start="1" type="1" class="compact type-1" id="appendix-A-1">
-<li id="appendix-A-1.1">
-          <p id="appendix-A-1.1.1"><span><a href="#rfc8366" class="internal xref">CDDL for RFC 8366</a> (<a href="#rfc8366" class="auto internal xref">Figure 1</a>)</span><a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1"><span><a href="#rfc9457" class="internal xref">CDDL for RFC 9457</a> (<a href="#rfc9457" class="auto internal xref">Figure 2</a>)</span><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li id="appendix-A-1.3">
-          <p id="appendix-A-1.3.1"><span><a href="#rfc9595" class="internal xref">CDDL for RFC 9595</a> (<a href="#rfc9595" class="auto internal xref">Figure 3</a>)</span><a href="#appendix-A-1.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1"><span><a href="#cose-algorithms" class="internal xref">CDDL for cose-algorithms Registry</a> (<a href="#cose-algorithms" class="auto internal xref">Figure 4</a>)</span><a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
-</li>
-      </ol>
+<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-1">
+        <dt id="appendix-A-1.1">
+<a href="#rfc8366" class="auto internal xref">Figure 1</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-A-1.2">
+          <p id="appendix-A-1.2.1"><a href="#rfc8366" class="internal xref">CDDL for RFC 8366</a><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.3">
+<a href="#rfc9457" class="auto internal xref">Figure 2</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-A-1.4">
+          <p id="appendix-A-1.4.1"><a href="#rfc9457" class="internal xref">CDDL for RFC 9457</a><a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.5">
+<a href="#rfc9595" class="auto internal xref">Figure 3</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-A-1.6">
+          <p id="appendix-A-1.6.1"><a href="#rfc9595" class="internal xref">CDDL for RFC 9595</a><a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.7">
+<a href="#cose-algorithms" class="auto internal xref">Figure 4</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-A-1.8">
+          <p id="appendix-A-1.8.1"><a href="#cose-algorithms" class="internal xref">CDDL for cose-algorithms Registry</a><a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
 </section>
 </div>
 <div id="acknowledgements">
