@@ -1,3 +1,5 @@
+<!-- regenerate: on (set to off if you edit this file) -->
+
 # CDDL models for some existing RFCs
 
 This is the working area for the individual Internet-Draft, "CDDL models for some existing RFCs".
@@ -7,16 +9,14 @@ This is the working area for the individual Internet-Draft, "CDDL models for som
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-bormann-cbor-rfc-cddl-models)
 * [Compare Editor's Copy to Individual Draft](https://cabo.github.io/common-cddl/#go.draft-bormann-cbor-rfc-cddl-models.diff)
 
-[Access to all branches](https://cabo.github.io/common-cddl/)
 
 ## Contributing
 
 See the
 [guidelines for contributions](https://github.com/cabo/common-cddl/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 
