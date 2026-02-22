@@ -45,6 +45,11 @@ informative:
   RFC7071: reputon
   RFC9595: yang-sid
   IANA.cose:
+  IANA.dns-parameters:
+  IANA-REGISTRY:
+    target: https://rubygems.org/gems/iana-registry
+    title: iana-registry | Rubygems.org
+    date: false
 
 --- abstract
 
@@ -178,7 +183,23 @@ or more spaces and other characters that cannot be in CDDL names
 {::include-fold65left2 cose-algorithms.cddl}
 ~~~
 {: #cose-algorithms sourcecode-name="cose-algorithms.cddl"
-   title="CDDL for cose-algorithms Registry"}
+   title="Derived CDDL for COSE Algorithms Registry"}
+
+## DNS Record Types
+
+The IANA registry for DNS Record Types is part of the IANA Domain Name
+System (DNS) Parameters registry group {{IANA.dns-parameters}}.
+
+Using the library {{IANA-REGISTRY}} and a short script ({{dns-rrtype-extract}}),
+a CDDL file for the Resource Record (RR) TYPEs registered in that
+registry group can be generated ({{dns-rrtypes}} in {{app-gen}}):
+
+~~~ ruby
+{::include dns-parameters-extract.rb}
+~~~
+{: #dns-rrtype-extract sourcecode-name="dns-extract-rrtypes.ruby"
+   title="Script for deriving CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters"}
+
 
 IANA Considerations
 ==================
@@ -202,6 +223,17 @@ errors instead of explaining their security consequences in this
 section.
 
 --- back
+
+# Example CDDL generated from registries {#app-gen}
+
+This appendix collects examples that are too long for the main body of
+the text.
+
+~~~ cddl
+{::include dns-parameters-rrtype-extracted.cddl}
+~~~
+{: #dns-rrtypes sourcecode-name="dns-rrtypes.cddl"
+   title="Derived CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters"}
 
 {::include-all lists.md}
 

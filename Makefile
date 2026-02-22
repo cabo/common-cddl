@@ -15,6 +15,16 @@ else
 endif
 endif
 
+prep: cose-algorithms.cddl dns-parameters-rrtype-extracted.cddl lists.md
+
+cose-algorithms.cddl: extract.rb
+	ruby $< > $@.new
+	mv $@.new $@
+
+dns-parameters-rrtype-extracted.cddl: dns-parameters-extract.rb
+	ruby $< > $@.new
+	mv $@.new $@
+
 lists.md: draft-bormann-cbor-rfc-cddl-models.xml
 	kramdown-rfc-extract-figures-tables -trfc $< >$@.new
 	mv $@.new $@
