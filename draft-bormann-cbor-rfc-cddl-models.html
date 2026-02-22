@@ -14,23 +14,22 @@ which could become part of a library of CDDL definitions available for
 use in CDDL2 processors.  It focuses on CDDL in (almost) published
 IETF RFCs. 
     " name="description">
-<meta content="xml2rfc 3.30.0" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="CDDL models" name="keyword">
 <meta content="draft-bormann-cbor-rfc-cddl-models-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.0
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
-    intervaltree 3.1.0
+    intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.3.8
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
-    requests 2.32.4
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    PyYAML 6.0.3
+    requests 2.32.5
+    wcwidth 0.3.0
 -->
 <link href="draft-bormann-cbor-rfc-cddl-models.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -171,7 +170,7 @@ IETF RFCs.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Oxygen Mono';
@@ -179,7 +178,8 @@ IETF RFCs.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 }
 
 @font-face {
@@ -571,6 +571,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -641,7 +642,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1049,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDDL models for some existing RFCs</td>
-<td class="right">August 2025</td>
+<td class="right">February 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann</td>
-<td class="center">Expires 2 March 2026</td>
+<td class="center">Expires 26 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-bormann-cbor-rfc-cddl-models-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-08-29" class="published">29 August 2025</time>
+<time datetime="2026-02-22" class="published">22 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-02">2 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-26">26 August 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1126,7 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,7 +1135,7 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2025 IETF Trust and the persons identified as the
+            Copyright (c) 2026 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1183,6 +1184,9 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-cose-algorithms-registry" class="internal xref">COSE Algorithms Registry</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-dns-record-types" class="internal xref">DNS Record Types</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
@@ -1203,13 +1207,16 @@ IETF RFCs.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-list-of-figures" class="internal xref">List of Figures</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example-cddl-generated-from" class="internal xref">Example CDDL generated from registries</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-list-of-figures" class="internal xref">List of Figures</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1325,7 +1332,7 @@ preferably-absolute-uri = ~uri
 <a href="#name-cddl-for-rfc-9457" class="selfRef">CDDL for RFC 9457</a>
           </figcaption></figure>
 </div>
-<p id="section-2.3-3">Note that <span><a href="https://rfc-editor.org/rfc/rfc9290#appendix-B" class="relref">Appendix B</a> of [<a href="#RFC9290" class="cite xref">RFC9290</a>]</span> also defines a CBOR-specific data
+<p id="section-2.3-3">Note that <span><a href="https://rfc-editor.org/rfc/rfc9290#appendix-B" class="relref">Appendix B</a> of [<a href="#RFC9290" class="cite xref">RFC9290</a>]</span> defines a related CBOR-specific data
 model that may be useful for tunneling <span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span> or <span>[<a href="#RFC9457" class="cite xref">RFC9457</a>]</span> problem details in
 <span>[<a href="#RFC9290" class="cite xref">RFC9290</a>]</span> Concise Problem Details.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
 </section>
@@ -1417,8 +1424,8 @@ item = {
 values in IANA registries.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">This section is intended to have one subsection for each CDDL data
 model presented that is derived from an existing IANA registry.
-As a start, it is fleshed out with one such data model.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">The intention is that these reference modules are update automatically
+As a start, it is fleshed out with two such data models.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The intention is that these reference modules are updated automatically
 (after each change of the registry or periodically, frequent enough.)
 Hence, this document can only present a snapshot for IANA-derived data
 models.<a href="#section-3-3" class="pilcrow">¶</a></p>
@@ -1429,9 +1436,9 @@ suggestions for improvement are very welcome.<a href="#section-3-4" class="pilcr
         <h3 id="name-cose-algorithms-registry">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-cose-algorithms-registry" class="section-name selfRef">COSE Algorithms Registry</a>
         </h3>
-<p id="section-3.1-1">The IANA registry for COSE Algorithms is part of the IANA cose
-registry group <span>[<a href="#IANA.cose" class="cite xref">IANA.cose</a>]</span>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1-2">The following automatically derived model defines some 70 CDDL rules
+<p id="section-3.1-1">The IANA registry for COSE Algorithms is part of the IANA CBOR Object
+Signing and Encryption (COSE) registry group <span>[<a href="#IANA.cose" class="cite xref">IANA.cose</a>]</span>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The following automatically derived model defines some 80 CDDL rules
 that have the name for a COSE algorithm as its rule name and the
 actual algorithm number as its right hand side.
 The additional first rule is a type choice between all these
@@ -1446,7 +1453,7 @@ and do not consider their potential use in modeling or programming
 languages; the automatic derivation used here turns sequences of one
 or more spaces and other characters that cannot be in CDDL names
 (<code>[/+]</code> here) into underscores.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
-<span id="name-cddl-for-cose-algorithms-re"></span><div id="cose-algorithms">
+<span id="name-derived-cddl-for-cose-algor"></span><div id="cose-algorithms">
 <figure id="figure-4">
           <div class="breakable lang-cddl sourcecode" id="section-3.1-5.1">
 <pre>
@@ -1561,7 +1568,45 @@ IV-GENERATION = 34
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-cddl-for-cose-algorithms-re" class="selfRef">CDDL for cose-algorithms Registry</a>
+<a href="#name-derived-cddl-for-cose-algor" class="selfRef">Derived CDDL for COSE Algorithms Registry</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="dns-record-types">
+<section id="section-3.2">
+        <h3 id="name-dns-record-types">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-dns-record-types" class="section-name selfRef">DNS Record Types</a>
+        </h3>
+<p id="section-3.2-1">The IANA registry for DNS Record Types is part of the IANA Domain Name
+System (DNS) Parameters registry group <span>[<a href="#IANA.dns-parameters" class="cite xref">IANA.dns-parameters</a>]</span>.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">Using the library <span>[<a href="#IANA-REGISTRY" class="cite xref">IANA-REGISTRY</a>]</span> and a short script (<a href="#dns-rrtype-extract" class="auto internal xref">Figure 5</a>),
+a CDDL file for the Resource Record (RR) TYPEs registered in that
+registry group can be generated (<a href="#dns-rrtypes" class="auto internal xref">Figure 6</a> in <a href="#app-gen" class="auto internal xref">Appendix A</a>):<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<span id="name-script-for-deriving-cddl-fo"></span><div id="dns-rrtype-extract">
+<figure id="figure-5">
+          <div class="lang-ruby sourcecode" id="section-3.2-3.1">
+<pre>
+require 'iana-registry'
+
+DNS_RR = {}
+
+REXML::XPath.each(IANA::Registry.load("dns-parameters").root,
+    "//xmlns:registry[@id='dns-parameters-4']/xmlns:record",
+    IANA::Registry::NS) do |x|
+  typ = x.elements['type'].text
+  value = x.elements['value'].text.to_i
+  semantics = x.elements['description'].text
+  if semantics &amp;&amp; typ =~ /\A[-_A-Z0-9]+\z/
+    DNS_RR[typ.gsub("-", "_")] = value
+  end
+end
+
+puts DNS_RR.map { |t, v| "RR_#{t} = #{v}\n" }
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-script-for-deriving-cddl-fo" class="selfRef">Script for deriving CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1584,7 +1629,7 @@ IV-GENERATION = 34
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security considerations</a>
       </h2>
 <p id="section-5-1">The security considerations of <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>, <span>[<a href="#RFC9682" class="cite xref">RFC9682</a>]</span>, <span>[<a href="#RFC9165" class="cite xref">RFC9165</a>]</span>, <span>[<a href="#RFC9741" class="cite xref">RFC9741</a>]</span>, <span>[<a href="#STD94" class="cite xref">STD94</a>]</span> and <span>[<a href="#STD90" class="cite xref">STD90</a>]</span> apply.
-This collection of CDDL models is not thought to create new security
+This collection of CDDL models is not believed to create new security
 considerations.
 Errors in the models could -- if we knew of them, we'd fix those
 errors instead of explaining their security consequences in this
@@ -1643,9 +1688,17 @@ section.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="IANA-REGISTRY">[IANA-REGISTRY]</dt>
+        <dd>
+<span class="refTitle">"iana-registry | Rubygems.org"</span>, <span>&lt;<a href="https://rubygems.org/gems/iana-registry">https://rubygems.org/gems/iana-registry</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="IANA.cose">[IANA.cose]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE)"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cose">https://www.iana.org/assignments/cose</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IANA.dns-parameters">[IANA.dns-parameters]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Domain Name System (DNS) Parameters"</span>, <span>&lt;<a href="https://www.iana.org/assignments/dns-parameters">https://www.iana.org/assignments/dns-parameters</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7071">[RFC7071]</dt>
         <dd>
@@ -1676,49 +1729,167 @@ section.<a href="#section-5-1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="list-of-figures">
+<div id="app-gen">
 <section id="appendix-A">
+      <h2 id="name-example-cddl-generated-from">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-cddl-generated-from" class="section-name selfRef">Example CDDL generated from registries</a>
+      </h2>
+<p id="appendix-A-1">This appendix collects examples that are too long for the main body of
+the text.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<span id="name-derived-cddl-for-the-resour"></span><div id="dns-rrtypes">
+<figure id="figure-6">
+        <div class="breakable lang-cddl sourcecode" id="appendix-A-2.1">
+<pre>
+RR_A = 1
+RR_NS = 2
+RR_MD = 3
+RR_MF = 4
+RR_CNAME = 5
+RR_SOA = 6
+RR_MB = 7
+RR_MG = 8
+RR_MR = 9
+RR_NULL = 10
+RR_WKS = 11
+RR_PTR = 12
+RR_HINFO = 13
+RR_MINFO = 14
+RR_MX = 15
+RR_TXT = 16
+RR_RP = 17
+RR_AFSDB = 18
+RR_X25 = 19
+RR_ISDN = 20
+RR_RT = 21
+RR_NSAP = 22
+RR_NSAP_PTR = 23
+RR_SIG = 24
+RR_KEY = 25
+RR_PX = 26
+RR_GPOS = 27
+RR_AAAA = 28
+RR_LOC = 29
+RR_NXT = 30
+RR_EID = 31
+RR_NIMLOC = 32
+RR_SRV = 33
+RR_ATMA = 34
+RR_NAPTR = 35
+RR_KX = 36
+RR_CERT = 37
+RR_A6 = 38
+RR_DNAME = 39
+RR_SINK = 40
+RR_OPT = 41
+RR_APL = 42
+RR_DS = 43
+RR_SSHFP = 44
+RR_IPSECKEY = 45
+RR_RRSIG = 46
+RR_NSEC = 47
+RR_DNSKEY = 48
+RR_DHCID = 49
+RR_NSEC3 = 50
+RR_NSEC3PARAM = 51
+RR_TLSA = 52
+RR_SMIMEA = 53
+RR_HIP = 55
+RR_NINFO = 56
+RR_RKEY = 57
+RR_TALINK = 58
+RR_CDS = 59
+RR_CDNSKEY = 60
+RR_OPENPGPKEY = 61
+RR_CSYNC = 62
+RR_ZONEMD = 63
+RR_SVCB = 64
+RR_HTTPS = 65
+RR_DSYNC = 66
+RR_HHIT = 67
+RR_BRID = 68
+RR_EUI48 = 108
+RR_EUI64 = 109
+RR_NXNAME = 128
+RR_TKEY = 249
+RR_TSIG = 250
+RR_IXFR = 251
+RR_AXFR = 252
+RR_MAILB = 253
+RR_MAILA = 254
+RR_URI = 256
+RR_CAA = 257
+RR_AVC = 258
+RR_DOA = 259
+RR_AMTRELAY = 260
+RR_RESINFO = 261
+RR_WALLET = 262
+RR_CLA = 263
+RR_IPN = 264
+RR_TA = 32768
+RR_DLV = 32769
+</pre>
+</div>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<a href="#name-derived-cddl-for-the-resour" class="selfRef">Derived CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="list-of-figures">
+<section id="appendix-B">
       <h2 id="name-list-of-figures">
 <a href="#name-list-of-figures" class="section-name selfRef">List of Figures</a>
       </h2>
-<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-1">
-        <dt id="appendix-A-1.1">
+<span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-1">
+        <dt id="appendix-B-1.1">
 <a href="#rfc8366" class="auto internal xref">Figure 1</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1"><a href="#rfc8366" class="internal xref">CDDL for RFC 8366</a><a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.2">
+          <p id="appendix-B-1.2.1"><a href="#rfc8366" class="internal xref">CDDL for RFC 8366</a><a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.3">
+<dt id="appendix-B-1.3">
 <a href="#rfc9457" class="auto internal xref">Figure 2</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1"><a href="#rfc9457" class="internal xref">CDDL for RFC 9457</a><a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.4">
+          <p id="appendix-B-1.4.1"><a href="#rfc9457" class="internal xref">CDDL for RFC 9457</a><a href="#appendix-B-1.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.5">
+<dt id="appendix-B-1.5">
 <a href="#rfc9595" class="auto internal xref">Figure 3</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.6">
-          <p id="appendix-A-1.6.1"><a href="#rfc9595" class="internal xref">CDDL for RFC 9595</a><a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.6">
+          <p id="appendix-B-1.6.1"><a href="#rfc9595" class="internal xref">CDDL for RFC 9595</a><a href="#appendix-B-1.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.7">
+<dt id="appendix-B-1.7">
 <a href="#cose-algorithms" class="auto internal xref">Figure 4</a>:</dt>
-        <dd style="margin-left: 5.5em" id="appendix-A-1.8">
-          <p id="appendix-A-1.8.1"><a href="#cose-algorithms" class="internal xref">CDDL for cose-algorithms Registry</a><a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.8">
+          <p id="appendix-B-1.8.1"><a href="#cose-algorithms" class="internal xref">Derived CDDL for COSE Algorithms Registry</a><a href="#appendix-B-1.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-B-1.9">
+<a href="#dns-rrtype-extract" class="auto internal xref">Figure 5</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.10">
+          <p id="appendix-B-1.10.1"><a href="#dns-rrtype-extract" class="internal xref">Script for deriving CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters</a><a href="#appendix-B-1.10.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-B-1.11">
+<a href="#dns-rrtypes" class="auto internal xref">Figure 6</a>:</dt>
+        <dd style="margin-left: 5.5em" id="appendix-B-1.12">
+          <p id="appendix-B-1.12.1"><a href="#dns-rrtypes" class="internal xref">Derived CDDL for the Resource Record (RR) TYPEs Registry in DNS Parameters</a><a href="#appendix-B-1.12.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="acknowledgements">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-B-1">TBD<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">TBD<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-C">
+<section id="appendix-D">
       <h2 id="name-authors-address">
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>

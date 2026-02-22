@@ -4,8 +4,8 @@
 
 Network Working Group                                         C. Bormann
 Internet-Draft                                    Universität Bremen TZI
-Intended status: Informational                            29 August 2025
-Expires: 2 March 2026
+Intended status: Informational                          22 February 2026
+Expires: 26 August 2026
 
 
                    CDDL models for some existing RFCs
@@ -53,16 +53,16 @@ Status of This Memo
 
 
 
-Bormann                   Expires 2 March 2026                  [Page 1]
+Bormann                  Expires 26 August 2026                 [Page 1]
 
-Internet-Draft     CDDL models for some existing RFCs        August 2025
+Internet-Draft     CDDL models for some existing RFCs      February 2026
 
 
-   This Internet-Draft will expire on 2 March 2026.
+   This Internet-Draft will expire on 26 August 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -77,7 +77,7 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  CDDL definitions for (almost) published RFCs  . . . . . . . .   2
+   2.  CDDL definitions for (almost) published RFCs  . . . . . . . .   3
      2.1.  RFC 7071 (Reputation Interchange) . . . . . . . . . . . .   3
      2.2.  RFC 8366 (Voucher Artifact for Bootstrapping
            Protocols)  . . . . . . . . . . . . . . . . . . . . . . .   3
@@ -86,33 +86,39 @@ Table of Contents
      2.5.  Your favorite RFC here... . . . . . . . . . . . . . . . .   5
    3.  CDDL definitions derived from IANA registries . . . . . . . .   5
      3.1.  COSE Algorithms Registry  . . . . . . . . . . . . . . . .   6
+     3.2.  DNS Record Types  . . . . . . . . . . . . . . . . . . . .   9
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
    5.  Security considerations . . . . . . . . . . . . . . . . . . .   9
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
      6.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  10
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  11
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
+   Appendix A.  Example CDDL generated from registries . . . . . . .  11
+   List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
 
 1.  Introduction
 
    (Please see abstract.)  Add in [STD94] [STD90] [RFC8610] [RFC9682]
    [RFC9165] [RFC9741]
 
+
+
+
+
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 2]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
 2.  CDDL definitions for (almost) published RFCs
 
    This section is intended to have one subsection for each CDDL data
    model presented for an existing RFC.  As a start, it is fleshed out
    with three such data models.
-
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 2]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
 
 2.1.  RFC 7071 (Reputation Interchange)
 
@@ -156,19 +162,18 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
 
                         Figure 1: CDDL for RFC 8366
 
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 3]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
    The two examples in the RFC can be validated with this little patchup
    script:
 
    sed -e s/ue=/uQ=/ -e s/'"true"'/true/ | cddl rfc8366.cddl vp -
-
-
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 3]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
 
 2.3.  RFC 9457 (Problem Details for HTTP APIs)
 
@@ -189,9 +194,9 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
 
                         Figure 2: CDDL for RFC 9457
 
-   Note that Appendix B of [RFC9290] also defines a CBOR-specific data
-   model that may be useful for tunneling [RFC7807] or [RFC9457] problem
-   details in [RFC9290] Concise Problem Details.
+   Note that Appendix B of [RFC9290] defines a related CBOR-specific
+   data model that may be useful for tunneling [RFC7807] or [RFC9457]
+   problem details in [RFC9290] Concise Problem Details.
 
 2.4.  RFC 9595 (YANG-SID)
 
@@ -213,19 +218,19 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
      }
    }
 
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 4]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
    rep<RE>=cat3<"(", RE, ")*">
    opt<RE>=cat3<"(", RE, ")?">
    cat3<A,B,C> = (A .cat B) .cat C
 
    id-re = "[a-zA-Z_][a-zA-Z0-9\\-_.]*"
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 4]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
-
    yang$yang-identifier = text .regexp id-re
    revision-identifier = text .regexp "[0-9]{4}-[0-9]{2}-[0-9]{2}"
    sid-file-version-identifier = uint .size 4
@@ -267,22 +272,21 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
    Often, CDDL models need to use numbers that have been registered as
    values in IANA registries.
 
+
+
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 5]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
    This section is intended to have one subsection for each CDDL data
    model presented that is derived from an existing IANA registry.  As a
-   start, it is fleshed out with one such data model.
+   start, it is fleshed out with two such data models.
 
-
-
-
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 5]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
-
-   The intention is that these reference modules are update
+   The intention is that these reference modules are updated
    automatically (after each change of the registry or periodically,
    frequent enough.)  Hence, this document can only present a snapshot
    for IANA-derived data models.
@@ -292,10 +296,10 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 3.1.  COSE Algorithms Registry
 
-   The IANA registry for COSE Algorithms is part of the IANA cose
-   registry group [IANA.cose].
+   The IANA registry for COSE Algorithms is part of the IANA CBOR Object
+   Signing and Encryption (COSE) registry group [IANA.cose].
 
-   The following automatically derived model defines some 70 CDDL rules
+   The following automatically derived model defines some 80 CDDL rules
    that have the name for a COSE algorithm as its rule name and the
    actual algorithm number as its right hand side.  The additional first
    rule is a type choice between all these constants; this could be used
@@ -326,18 +330,18 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
      / ECDH-SS_HKDF-512 / ECDH-SS_HKDF-256 / ECDH-ES_HKDF-512 / \
      ECDH-ES_HKDF-256 / Ed25519 / SHAKE128 / SHA-512_256 / SHA-256 \
      / SHA-256_64 / SHA-1 / direct_HKDF-AES-256 / direct_HKDF-AES-\
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 6]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
      128 / direct_HKDF-SHA-512 / direct_HKDF-SHA-256 / ESP256 / \
      EdDSA / ES256 / direct / A256KW / A192KW / A128KW / A128GCM / \
      A192GCM / A256GCM / HMAC_256_64 / HMAC_256_256 / HMAC_384_384 \
      / HMAC_512_512 / AES-CCM-16-64-128 / AES-CCM-16-64-256 / AES-\
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 6]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
-
      CCM-64-64-128 / AES-CCM-64-64-256 / AES-MAC_128_64 / AES-\
      MAC_256_64 / ChaCha20_Poly1305 / AES-MAC_128_128 / AES-\
      MAC_256_128 / AES-CCM-16-128-128 / AES-CCM-16-128-256 / AES-\
@@ -382,18 +386,18 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
    ES384 = -35
    ECDH-SS_A256KW = -34
    ECDH-SS_A192KW = -33
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 7]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
    ECDH-SS_A128KW = -32
    ECDH-ES_A256KW = -31
    ECDH-ES_A192KW = -30
    ECDH-ES_A128KW = -29
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 7]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
-
    ECDH-SS_HKDF-512 = -28
    ECDH-SS_HKDF-256 = -27
    ECDH-ES_HKDF-512 = -26
@@ -437,18 +441,43 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
    AES-CCM-64-128-256 = 33
    IV-GENERATION = 34
 
-                Figure 4: CDDL for cose-algorithms Registry
+            Figure 4: Derived CDDL for COSE Algorithms Registry
 
 
 
-
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 8]
+Bormann                  Expires 26 August 2026                 [Page 8]
 
-Internet-Draft     CDDL models for some existing RFCs        August 2025
+Internet-Draft     CDDL models for some existing RFCs      February 2026
 
+
+3.2.  DNS Record Types
+
+   The IANA registry for DNS Record Types is part of the IANA Domain
+   Name System (DNS) Parameters registry group [IANA.dns-parameters].
+
+   Using the library [IANA-REGISTRY] and a short script (Figure 5), a
+   CDDL file for the Resource Record (RR) TYPEs registered in that
+   registry group can be generated (Figure 6 in Appendix A):
+
+   require 'iana-registry'
+
+   DNS_RR = {}
+
+   REXML::XPath.each(IANA::Registry.load("dns-parameters").root,
+       "//xmlns:registry[@id='dns-parameters-4']/xmlns:record",
+       IANA::Registry::NS) do |x|
+     typ = x.elements['type'].text
+     value = x.elements['value'].text.to_i
+     semantics = x.elements['description'].text
+     if semantics && typ =~ /\A[-_A-Z0-9]+\z/
+       DNS_RR[typ.gsub("-", "_")] = value
+     end
+   end
+
+   puts DNS_RR.map { |t, v| "RR_#{t} = #{v}\n" }
+
+      Figure 5: Script for deriving CDDL for the Resource Record (RR)
+                      TYPEs Registry in DNS Parameters
 
 4.  IANA Considerations
 
@@ -461,13 +490,21 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
 
    The security considerations of [RFC8610], [RFC9682], [RFC9165],
    [RFC9741], [STD94] and [STD90] apply.  This collection of CDDL models
-   is not thought to create new security considerations.  Errors in the
+   is not believed to create new security considerations.  Errors in the
    models could -- if we knew of them, we'd fix those errors instead of
    explaining their security consequences in this section.
 
 6.  References
 
 6.1.  Normative References
+
+
+
+
+Bormann                  Expires 26 August 2026                 [Page 9]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
 
    [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
               Definition Language (CDDL): A Notational Convention to
@@ -498,14 +535,6 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
-
-
-
-Bormann                   Expires 2 March 2026                  [Page 9]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
-
    [STD94]    Internet Standard 94,
               <https://www.rfc-editor.org/info/std94>.
               At the time of writing, this STD comprises the following:
@@ -517,9 +546,25 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
 
 6.2.  Informative References
 
+   [IANA-REGISTRY]
+              "iana-registry | Rubygems.org",
+              <https://rubygems.org/gems/iana-registry>.
+
    [IANA.cose]
               IANA, "CBOR Object Signing and Encryption (COSE)",
               <https://www.iana.org/assignments/cose>.
+
+
+
+
+Bormann                  Expires 26 August 2026                [Page 10]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
+   [IANA.dns-parameters]
+              IANA, "Domain Name System (DNS) Parameters",
+              <https://www.iana.org/assignments/dns-parameters>.
 
    [RFC7071]  Borenstein, N. and M. Kucherawy, "A Media Type for
               Reputation Interchange", RFC 7071, DOI 10.17487/RFC7071,
@@ -548,25 +593,142 @@ Internet-Draft     CDDL models for some existing RFCs        August 2025
               iDentifier (YANG SID)", RFC 9595, DOI 10.17487/RFC9595,
               July 2024, <https://www.rfc-editor.org/rfc/rfc9595>.
 
+Appendix A.  Example CDDL generated from registries
+
+   This appendix collects examples that are too long for the main body
+   of the text.
+
+   RR_A = 1
+   RR_NS = 2
+   RR_MD = 3
+   RR_MF = 4
+   RR_CNAME = 5
+   RR_SOA = 6
+   RR_MB = 7
+   RR_MG = 8
+   RR_MR = 9
+   RR_NULL = 10
+   RR_WKS = 11
+   RR_PTR = 12
+
+
+
+Bormann                  Expires 26 August 2026                [Page 11]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
+   RR_HINFO = 13
+   RR_MINFO = 14
+   RR_MX = 15
+   RR_TXT = 16
+   RR_RP = 17
+   RR_AFSDB = 18
+   RR_X25 = 19
+   RR_ISDN = 20
+   RR_RT = 21
+   RR_NSAP = 22
+   RR_NSAP_PTR = 23
+   RR_SIG = 24
+   RR_KEY = 25
+   RR_PX = 26
+   RR_GPOS = 27
+   RR_AAAA = 28
+   RR_LOC = 29
+   RR_NXT = 30
+   RR_EID = 31
+   RR_NIMLOC = 32
+   RR_SRV = 33
+   RR_ATMA = 34
+   RR_NAPTR = 35
+   RR_KX = 36
+   RR_CERT = 37
+   RR_A6 = 38
+   RR_DNAME = 39
+   RR_SINK = 40
+   RR_OPT = 41
+   RR_APL = 42
+   RR_DS = 43
+   RR_SSHFP = 44
+   RR_IPSECKEY = 45
+   RR_RRSIG = 46
+   RR_NSEC = 47
+   RR_DNSKEY = 48
+   RR_DHCID = 49
+   RR_NSEC3 = 50
+   RR_NSEC3PARAM = 51
+   RR_TLSA = 52
+   RR_SMIMEA = 53
+   RR_HIP = 55
+   RR_NINFO = 56
+   RR_RKEY = 57
+   RR_TALINK = 58
+   RR_CDS = 59
+   RR_CDNSKEY = 60
+   RR_OPENPGPKEY = 61
+
+
+
+Bormann                  Expires 26 August 2026                [Page 12]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
+
+   RR_CSYNC = 62
+   RR_ZONEMD = 63
+   RR_SVCB = 64
+   RR_HTTPS = 65
+   RR_DSYNC = 66
+   RR_HHIT = 67
+   RR_BRID = 68
+   RR_EUI48 = 108
+   RR_EUI64 = 109
+   RR_NXNAME = 128
+   RR_TKEY = 249
+   RR_TSIG = 250
+   RR_IXFR = 251
+   RR_AXFR = 252
+   RR_MAILB = 253
+   RR_MAILA = 254
+   RR_URI = 256
+   RR_CAA = 257
+   RR_AVC = 258
+   RR_DOA = 259
+   RR_AMTRELAY = 260
+   RR_RESINFO = 261
+   RR_WALLET = 262
+   RR_CLA = 263
+   RR_IPN = 264
+   RR_TA = 32768
+   RR_DLV = 32769
+
+         Figure 6: Derived CDDL for the Resource Record (RR) TYPEs
+                         Registry in DNS Parameters
+
 List of Figures
 
    Figure 1:  CDDL for RFC 8366
    Figure 2:  CDDL for RFC 9457
    Figure 3:  CDDL for RFC 9595
-   Figure 4:  CDDL for cose-algorithms Registry
-
-
-
-Bormann                   Expires 2 March 2026                 [Page 10]
-
-Internet-Draft     CDDL models for some existing RFCs        August 2025
-
+   Figure 4:  Derived CDDL for COSE Algorithms Registry
+   Figure 5:  Script for deriving CDDL for the Resource Record (RR)
+              TYPEs Registry in DNS Parameters
+   Figure 6:  Derived CDDL for the Resource Record (RR) TYPEs Registry
+              in DNS Parameters
 
 Acknowledgements
 
    TBD
 
 Author's Address
+
+
+
+
+Bormann                  Expires 26 August 2026                [Page 13]
+
+Internet-Draft     CDDL models for some existing RFCs      February 2026
+
 
    Carsten Bormann
    Universität Bremen TZI
@@ -613,4 +775,10 @@ Author's Address
 
 
 
-Bormann                   Expires 2 March 2026                 [Page 11]
+
+
+
+
+
+
+Bormann                  Expires 26 August 2026                [Page 14]
