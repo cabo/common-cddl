@@ -5,7 +5,7 @@ title: >
   CDDL models for some existing RFCs
 # abbrev: CDDL models from RFCs
 docname: draft-bormann-cbor-rfc-cddl-models-latest
-date: 2025-08-29 # 06 2025-02-23 # 05 2024-08-27 # 04
+date: 2026-02-22 # 07 2025-08-29 # 06 2025-02-23 # 05 2024-08-27 # 04
 keyword: CDDL models
 cat: info
 stream: IETF
@@ -121,7 +121,7 @@ preferably-absolute-uri = ~uri
 ~~~
 {: #rfc9457 sourcecode-name="rfc9457.cddl" title="CDDL for RFC 9457"}
 
-Note that {{Appendix B of RFC9290}} also defines a CBOR-specific data
+Note that {{Appendix B of RFC9290}} defines a related CBOR-specific data
 model that may be useful for tunneling {{RFC7807}} or {{RFC9457}} problem details in
 {{RFC9290}} Concise Problem Details.
 
@@ -146,9 +146,9 @@ values in IANA registries.
 
 This section is intended to have one subsection for each CDDL data
 model presented that is derived from an existing IANA registry.
-As a start, it is fleshed out with one such data model.
+As a start, it is fleshed out with two such data models.
 
-The intention is that these reference modules are update automatically
+The intention is that these reference modules are updated automatically
 (after each change of the registry or periodically, frequent enough.)
 Hence, this document can only present a snapshot for IANA-derived data
 models.
@@ -158,10 +158,10 @@ suggestions for improvement are very welcome.
 
 ## COSE Algorithms Registry
 
-The IANA registry for COSE Algorithms is part of the IANA cose
-registry group {{IANA.cose}}.
+The IANA registry for COSE Algorithms is part of the IANA CBOR Object
+Signing and Encryption (COSE) registry group {{IANA.cose}}.
 
-The following automatically derived model defines some 70 CDDL rules
+The following automatically derived model defines some 80 CDDL rules
 that have the name for a COSE algorithm as its rule name and the
 actual algorithm number as its right hand side.
 The additional first rule is a type choice between all these
@@ -209,14 +209,11 @@ This document makes no requests of IANA.
 However, the use of IANA registries for deriving CDDL (e.g., as in
 {{iana-defs}}) is an active subject of discussion.
 
-
-
-
 Security considerations
 =======================
 
 The security considerations of {{-cddl}}, {{-cddl-grammar}}, {{-control1}}, {{-control2}}, {{-cbor}} and {{-json}} apply.
-This collection of CDDL models is not thought to create new security
+This collection of CDDL models is not believed to create new security
 considerations.
 Errors in the models could -- if we knew of them, we'd fix those
 errors instead of explaining their security consequences in this

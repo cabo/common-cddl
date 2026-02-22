@@ -15,3 +15,9 @@
 {{cose-algorithms}}:
 : {{<<cose-algorithms}}
 
+{{dns-rrtype-extract}}:
+: {{<<dns-rrtype-extract}}
+
+{{dns-rrtypes}}:
+: {{<<dns-rrtypes}}
+
